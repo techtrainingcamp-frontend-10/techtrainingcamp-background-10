@@ -3,17 +3,17 @@ import { renderRoutes } from 'react-router-config';
 
 import routes from './router';
 
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Frame from '@/components/frame'
 
 export default memo(function App() {
   return (
     <div>
-      <HashRouter>
+      <BrowserRouter>
         <Frame>
           {renderRoutes(routes)}
         </Frame>
-      </HashRouter>
+      </BrowserRouter>
     </div>
   )
 })
