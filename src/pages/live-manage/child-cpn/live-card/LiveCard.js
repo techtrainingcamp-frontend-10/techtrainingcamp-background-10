@@ -1,29 +1,26 @@
 import { Card, Avatar } from 'antd';
 import { Menu, Dropdown, Button } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
-
 import React, { memo } from 'react'
 import { CardWrapper } from './style';
 
 const { Meta } = Card;
 
-const menu = (
+const menu = (id , onDelete) => {
+    return (
     <Menu>
         <Menu.Item>
-            <a>
-                Edit
-            </a>
+            编辑
         </Menu.Item>
-        <Menu.Item>
-            <a>
-                Delete
-            </a>
+        <Menu.Item onClick={()=> onDelete(id)}>
+            删除
         </Menu.Item>
     </Menu>
-);
+    )
+}
 
-const LiveCard = ({ liveCard }) => {
-
+const LiveCard = ({ liveCard , onDelete }) => {
+    console.log(onDelete)
     return (
         <CardWrapper>
             <Card
@@ -35,7 +32,7 @@ const LiveCard = ({ liveCard }) => {
                     />
                 }
                 actions={[
-                    <Dropdown overlay={menu} placement="topCenter" arrow>
+                    <Dropdown overlay={menu(liveCard.id, onDelete)} placement="topCenter" arrow>
                         <EllipsisOutlined key="ellipsis" />
                     </Dropdown>
                 ]}
