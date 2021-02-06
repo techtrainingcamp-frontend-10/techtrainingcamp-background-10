@@ -1,11 +1,11 @@
-import LiveCard from './child-cpn/live-card'
+import LiveCard from './LiveCard'
 
 const LiveCards = ({ liveCards }) => {
     return (
         <div>
         <>
             {liveCards.map((liveCard) => (
-                <LiveCard liveCard={liveCard}
+                <LiveCard liveCard={liveCard} key={liveCard.id}
                 />
             ))}
         </>

@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { Button } from 'antd';
 import { useState } from 'react'
 import { LiveWrapper } from './style';
-import LiveCards from './child-cpn/LiveCards.js'
+import LiveCards from './child-cpn/live-card/LiveCards'
 
 export default memo(function LiveManage() {
     const [showLiveCard, setShowLiveCard]  = useState(false)
@@ -22,6 +22,14 @@ export default memo(function LiveManage() {
             src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
             id: 2
         }, 
+
+        {
+            title: '直播活动sample3',
+            description: '2021-02-08 14:54',
+            alt: 'example3',
+            src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+            id: 3
+        }, 
     ])
 
     return (
@@ -34,7 +42,7 @@ export default memo(function LiveManage() {
                         <LiveCards liveCards={liveCards} />
                     ) 
                     : (
-                        ' No Live Room Added'
+                        <h3>You've not set up a live room yet--click 新建直播 to set up your first live room!</h3>
                     )
                 }
             </div>

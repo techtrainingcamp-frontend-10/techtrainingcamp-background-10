@@ -22,13 +22,7 @@ const menu = (
     </Menu>
 );
 
-export default memo(function index( {liveCard} ) {
-    // const Live = {
-    //     title: '直播活动sample1',
-    //     description: '2021-02-06 14:54',
-    //     alt: 'example',
-    //     src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
-    // }
+const LiveCard = ({ liveCard }) => {
 
     return (
         <CardWrapper>
@@ -53,4 +47,6 @@ export default memo(function index( {liveCard} ) {
             </Card>
         </CardWrapper>
     )
-})
+}
+
+export default LiveCard
