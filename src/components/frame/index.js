@@ -19,8 +19,8 @@ function index(props) {
                         <Menu.Item key="3" onClick={p => { props.history.push("/comment") }} >评论管理</Menu.Item>
                     </Menu>
                 </Header>
-                <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
-                    <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
+                <Content className="site-layout" style={{ padding: '20px 48px', marginTop: 64 }}>
+                    <div className="site-layout-background" >
                         {props.children}
                     </div>
                 </Content>

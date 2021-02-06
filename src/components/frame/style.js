@@ -10,7 +10,17 @@ export const FrameWrapper = styled.div`
     margin: 16px 24px 16px 0;
   }
 
+  .ant-layout {
+    width:100%;
+    height:100vh; 
+  }
 
+  .site-layout-background {
+    height: 100%;
+    background: #fff;
+    overflow: auto;
+    padding: 16px 28px;
+  }
 
   .ant-layout-header {
     background: white;
