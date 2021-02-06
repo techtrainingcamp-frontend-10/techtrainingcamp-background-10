@@ -5,13 +5,20 @@ import React, { memo } from 'react'
 const { Meta } = Card;
 
 export default memo(function index() {
+    const Live = {
+        title: '直播活动sample1',
+        description: '2021-02-06 14:54',
+        alt: 'example',
+        src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
+    }
+        
     return (
         <Card
             style={{ width: 300 }}
             cover={
                 <img
-                    alt="example"
-                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                    alt={Live.alt}
+                    src={Live.src}
                 />
             }
             actions={[
@@ -19,8 +26,8 @@ export default memo(function index() {
             ]}
         >
             <Meta
-                title="直播活动"
-                description="时间时间"
+                title={Live.title}
+                description={Live.description}
             />
         </Card>
     )
