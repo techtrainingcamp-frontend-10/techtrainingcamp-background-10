@@ -22,13 +22,13 @@ const menu = (
     </Menu>
 );
 
-export default memo(function index() {
-    const Live = {
-        title: '直播活动sample1',
-        description: '2021-02-06 14:54',
-        alt: 'example',
-        src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
-    }
+export default memo(function index( {liveCard} ) {
+    // const Live = {
+    //     title: '直播活动sample1',
+    //     description: '2021-02-06 14:54',
+    //     alt: 'example',
+    //     src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
+    // }
 
     return (
         <CardWrapper>
@@ -36,8 +36,8 @@ export default memo(function index() {
                 style={{ width: 300 }}
                 cover={
                     <img
-                        alt={Live.alt}
-                        src={Live.src}
+                        alt={liveCard.alt}
+                        src={liveCard.src}
                     />
                 }
                 actions={[
@@ -47,8 +47,8 @@ export default memo(function index() {
                 ]}
             >
                 <Meta
-                    title={Live.title}
-                    description={Live.description}
+                    title={liveCard.title}
+                    description={liveCard.description}
                 />
             </Card>
         </CardWrapper>
