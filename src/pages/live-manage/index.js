@@ -30,6 +30,14 @@ export default memo(function LiveManage() {
             src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
             id: 3
         }, 
+
+        {
+            title: '直播活动sample4',
+            description: '2021-02-09 14:54',
+            alt: 'example4',
+            src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+            id: 4
+        }, 
     ])
 
     return (
