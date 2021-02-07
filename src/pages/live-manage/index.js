@@ -1,11 +1,11 @@
 import React, { memo } from 'react'
-import { Button, Modal} from 'antd';
 import { useState } from 'react'
 import { LiveWrapper } from './style';
+import AddLiveRoom from './child-cpn/live-card/AddLiveRoom'
 import LiveCards from './child-cpn/live-card/LiveCards'
 
+
 export default memo(function LiveManage() {
-    // const [showLiveCard, setShowLiveCard]  = useState(false)
     const [liveCards, setLiveCards] = useState([ 
         {
             title: '直播活动sample1',
@@ -40,30 +40,6 @@ export default memo(function LiveManage() {
         }, 
     ])
 
-    const [visible, setVisible] = React.useState(false);
-    const [confirmLoading, setConfirmLoading] = React.useState(false);
-    const [modalText, setModalText] = React.useState('Content of the modal');
-  
-    // show pop-up UI form to set up the new Live Room
-    const showModal = () => {
-      setVisible(true);
-    };
-  
-    // submit in the pop-up window
-    const handleOk = () => {
-      setModalText('The modal will be closed after two seconds');
-      setConfirmLoading(true);
-      setTimeout(() => {
-        setVisible(false);
-        setConfirmLoading(false);
-      }, 2000);
-    };
-  
-    // candle the pop-up window
-    const handleCancel = () => {
-      console.log('Clicked cancel button');
-      setVisible(false);
-    };
 
     // handle delete card
     const deleteLiveCard = (id) => {
@@ -74,18 +50,7 @@ export default memo(function LiveManage() {
         <LiveWrapper>
             <div>
                 <h2>直播列表</h2>
-                <Button className='new-button' type="primary" onClick={showModal}>
-                    新建直播
-                </Button>
-                <Modal
-                    title="Title"
-                    visible={visible}
-                    onOk={handleOk}
-                    confirmLoading={confirmLoading}
-                    onCancel={handleCancel}
-                >
-                    <p>{modalText}</p>
-                </Modal>
+                <AddLiveRoom />
                 {liveCards.length > 0 ? 
                     (
                         <LiveCards liveCards={liveCards} onDelete={deleteLiveCard} />
