@@ -1,8 +1,7 @@
-import { Card, Avatar } from 'antd';
-import { Menu, Dropdown, Button } from 'antd';
+import { Card, Menu, Dropdown, Tag } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
 
-import React, { memo } from 'react'
+import React from 'react'
 import { CardWrapper } from './style';
 
 const { Meta } = Card;
@@ -44,6 +43,7 @@ const LiveCard = ({ liveCard }) => {
                     title={liveCard.title}
                     description={liveCard.description}
                 />
+                <Tag color="#82C2C4">直播中</Tag>
             </Card>
         </CardWrapper>
     )

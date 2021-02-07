@@ -37,7 +37,7 @@ export const FrameWrapper = styled.div`
 
   .ant-menu.ant-menu-dark .ant-menu-item-selected, 
   .ant-menu-dark .ant-menu-item:hover {
-    color: #1890ff;
+    color: #5276F0;
     background-color: transparent;
   }
 `

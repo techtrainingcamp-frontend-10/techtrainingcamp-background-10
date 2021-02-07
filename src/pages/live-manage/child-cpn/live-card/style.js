@@ -6,4 +6,10 @@ export const CardWrapper = styled.div`
     right: 0;
     bottom: 0;
   }
+
+  .ant-tag {
+    position:absolute;
+    top: 10px;
+    left: 10px;
+  }
 `

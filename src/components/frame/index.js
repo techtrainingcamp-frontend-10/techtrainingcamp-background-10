@@ -1,6 +1,6 @@
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu } from 'antd';
 
-import React, { memo } from 'react'
+import React from 'react'
 import { withRouter } from 'react-router-dom';
 
 import { FrameWrapper } from './style';
