@@ -20,7 +20,6 @@ const menu = (id , onDelete) => {
 }
 
 const LiveCard = ({ liveCard , onDelete }) => {
-    console.log(onDelete)
     return (
         <CardWrapper>
             <Card
