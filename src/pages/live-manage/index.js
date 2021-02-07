@@ -31,15 +31,22 @@ export default memo(function LiveManage() {
             id: 3
         }, 
 
-        {
-            title: '直播活动sample4',
-            description: '2021-02-09 14:54',
-            alt: 'example4',
-            src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
-            id: 4
-        }, 
     ])
 
+    // add live card
+    const addLiveCard = ({title , des}) => { 
+        // fake id
+        const id = Math.floor(Math.random() * 10000) + 1
+        const newLiveCard = {
+                title:title,
+                description: des,
+                alt:'userAdd', 
+                src:'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                id
+            }
+        console.log(newLiveCard)
+        setLiveCards([...liveCards, newLiveCard])
+    }
 
     // handle delete card
     const deleteLiveCard = (id) => {
@@ -50,7 +57,7 @@ export default memo(function LiveManage() {
         <LiveWrapper>
             <div>
                 <h2>直播列表</h2>
-                <AddLiveRoom />
+                <AddLiveRoom onAdd={addLiveCard}/>
                 {liveCards.length > 0 ? 
                     (
                         <LiveCards liveCards={liveCards} onDelete={deleteLiveCard} />
