@@ -22,8 +22,8 @@ const menu = (id , onDelete) => {
 const LiveCard = ({ liveCard , onDelete }) => {
     return (
         <CardWrapper>
-            <Card
-                style={{ width: 300 }}
+            <Card size="small"
+                // style={{ width: 300 }}
                 cover={
                     <img
                         alt={liveCard.alt}

@@ -39,7 +39,7 @@ const AddLiveRoom = ( {onAdd} ) => {
             {...layout}
             name="basic"
             initialValues={{
-                title: '直播活动sample4',
+                title: '直播活动sample1',
                 des: '2021-02-10 14:54'
             }}
             onFinish={onFinish}
