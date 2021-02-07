@@ -5,7 +5,7 @@ import { LiveWrapper } from './style';
 import LiveCards from './child-cpn/live-card/LiveCards'
 
 export default memo(function LiveManage() {
-    const [showLiveCard, setShowLiveCard]  = useState(false)
+    // const [showLiveCard, setShowLiveCard]  = useState(false)
     const [liveCards, setLiveCards] = useState([ 
         {
             title: '直播活动sample1',
@@ -40,6 +40,10 @@ export default memo(function LiveManage() {
         }, 
     ])
 
+    const deleteLiveCard = (id) => {
+        setLiveCards(liveCards.filter((liveCard) => liveCard.id !== id))
+    }
+
     return (
         <LiveWrapper>
             <div>
@@ -47,10 +51,10 @@ export default memo(function LiveManage() {
                 <Button className="new-button" type="primary">新建直播</Button>
                 {liveCards.length > 0 ? 
                     (
-                        <LiveCards liveCards={liveCards} />
+                        <LiveCards liveCards={liveCards} onDelete={deleteLiveCard} />
                     ) 
                     : (
-                        <h3>You've not set up a live room yet--click 新建直播 to set up your first live room!</h3>
+                        <h3>目前没有配置好的直播间，点击 新建直播 来配置您的第一个直播间吧!</h3>
                     )
                 }
             </div>
