@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 import { LiveWrapper } from './style';
 import AddLiveRoom from './child-cpn/live-card/AddLiveRoom'
 import LiveCards from './child-cpn/live-card/LiveCards'
@@ -29,9 +29,9 @@ export default memo(function LiveManage() {
             alt: 'example3',
             src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
             id: 3
-        }, 
-
+        }
     ])
+
 
     // add live card
     const addLiveCard = ({title , des}) => { 
@@ -45,7 +45,10 @@ export default memo(function LiveManage() {
                 id
             }
         console.log(newLiveCard)
-        setLiveCards([...liveCards, newLiveCard])
+        setLiveCards(liveCards => [...liveCards, newLiveCard])
+
+        // Why it's not updated...
+        console.log(liveCards)
     }
 
     // handle delete card
