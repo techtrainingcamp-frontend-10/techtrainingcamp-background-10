@@ -34,20 +34,21 @@ export default memo(function LiveManage() {
 
 
     // add live card
-    const addLiveCard = ({title , des}) => { 
+    const addLiveCard = (title , des) => { 
         // fake id
         const id = Math.floor(Math.random() * 10000) + 1
+        const name = title.value
+        const desc = des.value
         const newLiveCard = {
-                title:title,
-                description: des,
+                title: name,
+                description: desc,
                 alt:'userAdd', 
                 src:'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
                 id
             }
-        console.log(newLiveCard)
-        setLiveCards(liveCards => [...liveCards, newLiveCard])
+        setLiveCards([...liveCards, newLiveCard])
 
-        // Why it's not updated...
+        // state滞后一次
         console.log(liveCards)
     }
 

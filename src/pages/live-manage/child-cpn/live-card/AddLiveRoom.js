@@ -6,8 +6,9 @@ import { Form, Input } from 'antd';
 const AddLiveRoom = ( {onAdd} ) => {
     const [visible, setVisible] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
-    // const [title, setTitle] = useState('')
-    // const [des, setDes] = useState('')
+    const [title, setTitle] = useState('')
+    const [des, setDes] = useState('')
+    
     const layout = {
         labelCol: {
           span: 6,
@@ -23,84 +24,44 @@ const AddLiveRoom = ( {onAdd} ) => {
         },
       };
 
-    const onFinish = (values) => {
-        // console.log('Success:', values);
-        const title=values.title
-        const des=values.des
-        onAdd( {title , des} )
-    };
-
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
-
-    const [modalText, setModalText] = useState(
-        <Form
-            {...layout}
-            name="basic"
-            initialValues={{
-                title: '直播活动sample1',
-                des: '2021-02-10 14:54'
-            }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            >
-            <Form.Item
-                label="标题"
-                name="title"
-                rules={[
-                {
-                    required: true,
-                    message: '请输入直播间的名称',
-                },
-                ]}
-            >
-                <Input />
-            </Form.Item>
-
-            <Form.Item
-                label="时间"
-                name="des"
-                rules={[
-                {
-                    required: true,
-                    message: '请输入时间YYYY-MM-DD 00:00',
-                },
-                ]}
-            >
-                <Input />
-            </Form.Item>
-
-            <Form.Item {...tailLayout}>
-                <Button type="new-button" htmlType="submit">
-                确认并配置
-                </Button>
-            </Form.Item>
-
-        </Form>
-    )
-
 
     // show pop-up UI form to set up the new Live Room
     const showModal = () => {
+      // not working...
+      setTitle({value: ''})
+      setDes({value: ''})
       setVisible(true);
     };
   
     // submit in the pop-up window
-    const handleOK = ({  }) => {
+    const handleOK = () => {
     //   setModalText('The modal will be closed after two seconds');
-      setConfirmLoading(true);
-      setTimeout(() => {
-        setVisible(false);
-        setConfirmLoading(false);
-      }, 2000);
+      if (title.value.length > 0 && des.value.length > 0){
+        setConfirmLoading(true);
+        setTimeout(() => {
+            onAdd( title , des )
+            setVisible(false);
+            setConfirmLoading(false);
+        }, 500);
+      }
+      else {
+          console.log('error')
+      }
     };
   
     // candle the pop-up window
     const handleCancel = () => {
-      console.log('Clicked cancel button');
       setVisible(false);
     };
+
+    const onChangeTitle =(e) => {
+        setTitle({value: e.target.value});
+    }
+
+    const onChangeDes =(e) => {
+        setDes({value: e.target.value});
+    }
+    
     
     return (
         <div>
@@ -114,9 +75,39 @@ const AddLiveRoom = ( {onAdd} ) => {
                 confirmLoading={confirmLoading}
                 onCancel={handleCancel}
                 cancelText="取消"
-                okText="关闭"
+                okText="保存并配置"
             >
-                {modalText}
+                <Form
+                    {...layout}
+                    name="basic"
+                    >
+                    <Form.Item
+                        label="标题"
+                        name="title"
+                        rules={[
+                        {
+                            required: true,
+                            message: '请输入直播间的名称',
+                        },
+                        ]}
+                    >
+                        <Input onChange={onChangeTitle}/>
+                    </Form.Item>
+
+                    <Form.Item
+                        label="时间"
+                        name="des"
+                        rules={[
+                        {
+                            required: true,
+                            message: '请输入时间YYYY-MM-DD 00:00',
+                        },
+                        ]}
+                    >
+                        <Input onChange={onChangeDes} />
+                    </Form.Item>
+
+                </Form>
             </Modal>
         </div>
     )
