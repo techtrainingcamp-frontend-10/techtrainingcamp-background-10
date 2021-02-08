@@ -3,6 +3,7 @@ import { useState , useEffect } from 'react'
 import { LiveWrapper } from './style';
 import AddLiveRoom from './child-cpn/live-card/AddLiveRoom'
 import LiveCards from './child-cpn/live-card/LiveCards'
+import { Alert } from 'antd';
 
 
 export default memo(function LiveManage() {
@@ -12,9 +13,9 @@ export default memo(function LiveManage() {
     // add live card
     const addLiveCard = (title , des) => { 
         // fake id
-        const id = Math.floor(Math.random() * 10000) + 1
-        const name = title.value
-        const desc = des.value
+        const id = liveCards.length + 1
+        const name = title
+        const desc = des
         const newLiveCard = {
                 title: name,
                 description: desc,
@@ -22,10 +23,11 @@ export default memo(function LiveManage() {
                 src:'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
                 id
             }
-        setLiveCards([...liveCards, newLiveCard])
+
+        setLiveCards(liveCards => ([...liveCards, newLiveCard]))
 
         // state滞后一次
-        console.log(liveCards)
+        console.log('current state of liveCards', liveCards)
     }
 
     // handle delete card

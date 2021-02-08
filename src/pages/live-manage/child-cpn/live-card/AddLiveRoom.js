@@ -1,7 +1,6 @@
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 import { Button, Modal} from 'antd';
 import { Form, Input } from 'antd';
-import Error from './Error'
 
 const AddLiveRoom = ( {onAdd} ) => {
     const [visible, setVisible] = useState(false);
@@ -28,39 +27,44 @@ const AddLiveRoom = ( {onAdd} ) => {
     // show pop-up UI form to set up the new Live Room
     const showModal = () => {
       // not working...
-      setTitle({value: ''})
-      setDes({value: ''})
-      setVisible(true);
+      setTitle('')
+      setDes('')
+      setVisible(true)
     };
   
     // submit in the pop-up window
     const handleOK = () => {
-      if (title.value.length > 0 && des.value.length > 0){
+      // console.log(title)
+      if (title.length > 0 && des.length > 0){
         setConfirmLoading(true);
         setTimeout(() => {
             onAdd( title , des )
+            console.log('title reset', title)
+            setTitle('')
+            setDes('')
             setVisible(false);
             setConfirmLoading(false);
         }, 500);
       }
       else{
-        console.log('error')
+        alert('请完整填写直播间信息')
       }
     };
   
     // candle the pop-up window
     const handleCancel = () => {
-      setVisible(false);
+      setVisible(false)
     };
 
     const onChangeTitle =(e) => {
-        setTitle({value: e.target.value});
+        setTitle(e.target.value)
     }
 
     const onChangeDes =(e) => {
-        setDes({value: e.target.value});
+        setDes(e.target.value)
     }
     
+    const [form] = Form.useForm();
     
     return (
         <div>
@@ -77,6 +81,7 @@ const AddLiveRoom = ( {onAdd} ) => {
                 okText="保存并配置"
             >
                 <Form
+                    form={form}
                     {...layout}
                     name="basic"
                     >
@@ -90,7 +95,7 @@ const AddLiveRoom = ( {onAdd} ) => {
                         },
                         ]}
                     >
-                        <Input onChange={onChangeTitle}/>
+                        <Input value={title} onChange={onChangeTitle}/>
                     </Form.Item>
 
                     <Form.Item
@@ -103,9 +108,8 @@ const AddLiveRoom = ( {onAdd} ) => {
                         },
                         ]}
                     >
-                        <Input onChange={onChangeDes} />
+                        <Input value={des} onChange={onChangeDes} />
                     </Form.Item>
-
                 </Form>
             </Modal>
         </div>

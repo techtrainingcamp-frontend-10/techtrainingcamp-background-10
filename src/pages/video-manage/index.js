@@ -8,11 +8,13 @@ export default memo(function VideoManage() {
     const [liveCards, setLiveCards] = useState([])
 
     // add live card
-    const addLiveCard = (title , des) => { 
+    const addLiveCard = ( title , des ) => { 
         // fake id
+        console.log('title', title)
+        console.log(des)
         const id = Math.floor(Math.random() * 10000) + 1
-        const name = title.value
-        const desc = des.value
+        const name = title
+        const desc = des
         const newLiveCard = {
                 title: name,
                 description: desc,
@@ -23,7 +25,7 @@ export default memo(function VideoManage() {
         setLiveCards([...liveCards, newLiveCard])
 
         // state滞后一次
-        console.log(liveCards)
+        console.log('current state of liveCards', liveCards)
     }
 
     // handle delete card
