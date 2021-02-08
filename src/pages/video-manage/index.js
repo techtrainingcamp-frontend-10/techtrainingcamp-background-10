@@ -6,7 +6,7 @@ import { LiveWrapper } from './style';
 
 export default memo(function VideoManage() {
     const [liveCards, setLiveCards] = useState([])
-
+    
     // add live card
     const addLiveCard = (title , des) => { 
         // fake id

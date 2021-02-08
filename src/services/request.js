@@ -1,11 +1,12 @@
 import axios from 'axios';
-
 import { BASE_URL, TIMEOUT } from "./config";
 
 const instance = axios.create({
   baseURL: BASE_URL,
   timeout: TIMEOUT
 });
+
+require('../mock/api')
 
 instance.interceptors.request.use(config => {
   return config;
