@@ -3,6 +3,7 @@ import { useState , useEffect } from 'react'
 import { LiveWrapper } from './style';
 import AddLiveRoom from './child-cpn/live-card/AddLiveRoom'
 import LiveCards from './child-cpn/live-card/LiveCards'
+import { Empty } from 'antd';
 
 export default memo(function LiveManage() {
     const [liveCards, setLiveCards] = useState([])
@@ -52,7 +53,10 @@ export default memo(function LiveManage() {
                         <LiveCards liveCards={liveCards} onDelete={deleteLiveCard} onStatus={reverseStatus}/>
                     ) 
                     : (
-                        <h3>目前没有配置好的直播间，点击 新建直播 来配置您的第一个直播间吧!</h3>
+                        <>
+                        {/* <h3>目前没有配置好的直播间，点击 新建直播 来配置您的第一个直播间吧!</h3> */}
+                        <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="空空如也～ 点击新建直播来配置您的第一个直播间吧!"/>
+                        </>
                     )
                 }
             </div>

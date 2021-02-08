@@ -1,6 +1,8 @@
 import { useState , useEffect} from 'react'
-import { Button, Modal} from 'antd';
+import { Button, Modal, notification} from 'antd';
 import { Form, Input } from 'antd';
+import { message, Space } from 'antd';
+import { SmileOutlined } from '@ant-design/icons';
 
 const AddLiveRoom = ( {onAdd} ) => {
     const [visible, setVisible] = useState(false);
@@ -23,6 +25,22 @@ const AddLiveRoom = ( {onAdd} ) => {
         },
       };
 
+    const success = () => {
+      message.success('配置成功');
+    };
+
+    const warning = () => {
+      message.warning("请完整填写信息");
+    };
+
+    const openNotification = () => {
+      notification.open({
+        message: 'Notification Title',
+        description:
+          '配置成功！您的直播间已经上线啦',
+        icon: <SmileOutlined style={{ color: '#108ee9' }} />,
+      });
+    };
 
     // show pop-up UI form to set up the new Live Room
     const showModal = () => {
@@ -44,10 +62,12 @@ const AddLiveRoom = ( {onAdd} ) => {
             setDes('')
             setVisible(false);
             setConfirmLoading(false);
+            success()
+            openNotification()
         }, 500);
       }
       else{
-        alert('请完整填写直播间信息')
+        warning()
       }
     };
   
