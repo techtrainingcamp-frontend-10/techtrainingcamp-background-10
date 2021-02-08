@@ -6,20 +6,20 @@ import { CardWrapper } from './style';
 
 const { Meta } = Card;
 
-const menu = (id , onDelete) => {
-    return (
-    <Menu>
-        <Menu.Item>
-            编辑
-        </Menu.Item>
-        <Menu.Item onClick={()=> onDelete(id)}>
-            删除
-        </Menu.Item>
-    </Menu>
-    )
-}
+const LiveCard = ({ liveCard , onDelete , onStatus }) => {
+    const menu = () => {
+        return (
+        <Menu>
+            <Menu.Item onClick={()=> onStatus(liveCard.id)}>
+                {liveCard.status ? "下播" : "上线"}
+            </Menu.Item>
+            <Menu.Item onClick={()=> onDelete(liveCard.id)}>
+                删除
+            </Menu.Item>
+        </Menu>
+        )
+    }
 
-const LiveCard = ({ liveCard , onDelete }) => {
     return (
         <CardWrapper>
             <Card size="small"
@@ -31,7 +31,7 @@ const LiveCard = ({ liveCard , onDelete }) => {
                     />
                 }
                 actions={[
-                    <Dropdown overlay={menu(liveCard.id, onDelete)} placement="topCenter" arrow>
+                    <Dropdown overlay={menu} placement="topCenter" arrow>
                         <EllipsisOutlined key="ellipsis" />
                     </Dropdown>
                 ]}
@@ -40,7 +40,8 @@ const LiveCard = ({ liveCard , onDelete }) => {
                     title={liveCard.title}
                     description={liveCard.description}
                 />
-                <Tag color="#82C2C4">直播中</Tag>
+                {liveCard.status ? <Tag color="#82C2C4">直播中</Tag> : <Tag color="#E9967A">已暂停</Tag>}
+                
             </Card>
         </CardWrapper>
     )

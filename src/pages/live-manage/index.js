@@ -3,8 +3,6 @@ import { useState , useEffect } from 'react'
 import { LiveWrapper } from './style';
 import AddLiveRoom from './child-cpn/live-card/AddLiveRoom'
 import LiveCards from './child-cpn/live-card/LiveCards'
-import { Alert } from 'antd';
-
 
 export default memo(function LiveManage() {
     const [liveCards, setLiveCards] = useState([])
@@ -19,8 +17,9 @@ export default memo(function LiveManage() {
         const newLiveCard = {
                 title: name,
                 description: desc,
-                alt:'userAdd', 
-                src:'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                alt:"userAdd", 
+                src:"https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
+                status: true,
                 id
             }
 
@@ -35,6 +34,14 @@ export default memo(function LiveManage() {
         setLiveCards(liveCards.filter((liveCard) => liveCard.id !== id))
     }
 
+    const reverseStatus = (id) => {
+        setLiveCards(
+            liveCards.map((liveCard) => 
+            liveCard.id === id ? { ...liveCard, status:!liveCard.status } : liveCard
+            )
+        )
+    }
+
     return (
         <LiveWrapper>
             <div>
@@ -42,7 +49,7 @@ export default memo(function LiveManage() {
                 <AddLiveRoom onAdd={addLiveCard}/>
                 {liveCards.length > 0 ? 
                     (
-                        <LiveCards liveCards={liveCards} onDelete={deleteLiveCard} />
+                        <LiveCards liveCards={liveCards} onDelete={deleteLiveCard} onStatus={reverseStatus}/>
                     ) 
                     : (
                         <h3>目前没有配置好的直播间，点击 新建直播 来配置您的第一个直播间吧!</h3>

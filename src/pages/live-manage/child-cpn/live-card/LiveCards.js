@@ -1,7 +1,7 @@
 import LiveCard from './LiveCard'
 import { Space } from 'antd';
 
-const LiveCards = ({ liveCards , onDelete }) => {
+const LiveCards = ({ liveCards , onDelete , onStatus }) => {
     return (
         <div>
         <Space size={[60, 30]} wrap>
@@ -9,6 +9,7 @@ const LiveCards = ({ liveCards , onDelete }) => {
                 <LiveCard liveCard={liveCard} 
                     key={liveCard.id}
                     onDelete={onDelete}
+                    onStatus={onStatus}
                 />
             ))}
          </Space>
