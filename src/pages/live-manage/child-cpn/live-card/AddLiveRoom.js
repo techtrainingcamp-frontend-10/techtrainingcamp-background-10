@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Button, Modal} from 'antd';
-// import LiveRoomForm from './LiveRoomForm'
 import { Form, Input } from 'antd';
+import Error from './Error'
 
 const AddLiveRoom = ( {onAdd} ) => {
     const [visible, setVisible] = useState(false);
@@ -35,7 +35,6 @@ const AddLiveRoom = ( {onAdd} ) => {
   
     // submit in the pop-up window
     const handleOK = () => {
-    //   setModalText('The modal will be closed after two seconds');
       if (title.value.length > 0 && des.value.length > 0){
         setConfirmLoading(true);
         setTimeout(() => {
@@ -44,8 +43,8 @@ const AddLiveRoom = ( {onAdd} ) => {
             setConfirmLoading(false);
         }, 500);
       }
-      else {
-          console.log('error')
+      else{
+        console.log('error')
       }
     };
   

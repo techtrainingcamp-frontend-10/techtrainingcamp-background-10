@@ -6,31 +6,7 @@ import LiveCards from './child-cpn/live-card/LiveCards'
 
 
 export default memo(function LiveManage() {
-    const [liveCards, setLiveCards] = useState([ 
-        // {
-        //     title: '直播活动sample1',
-        //     description: '2021-02-06 14:54',
-        //     alt: 'example1',
-        //     src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
-        //     id: 1
-        // }, 
-        
-        // {
-        //     title: '直播活动sample2',
-        //     description: '2021-02-07 14:54',
-        //     alt: 'example2',
-        //     src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
-        //     id: 2
-        // }, 
-
-        // {
-        //     title: '直播活动sample3',
-        //     description: '2021-02-08 14:54',
-        //     alt: 'example3',
-        //     src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
-        //     id: 3
-        // }
-    ])
+    const [liveCards, setLiveCards] = useState([])
 
 
     // add live card
