@@ -1,11 +1,11 @@
 import React, { memo } from 'react'
-import LoginForm from './LoginForm'
+import UserLogin from './components/UserLogin'
 
 export default memo(function Login() {
     return (
         <div>
             <h2>登录</h2>
-            <LoginForm />
+            <UserLogin />
         </div>
     )
 })
