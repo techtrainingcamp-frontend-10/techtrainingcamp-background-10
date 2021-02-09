@@ -1,8 +1,9 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import { useState } from 'react'
+import { withRouter } from 'react-router-dom';
 import Passport from './Passport'
 
-const UserLogin = () => {
+const UserLogin = (props) => {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -58,7 +59,7 @@ const UserLogin = () => {
           const p = new Passport();
           p.login(username, password, () => {
               // 登录成功时，跳转页面
-              this.props.history.push('/live');
+              props.history.push('/live');
           })
         }}>
           登录
@@ -68,4 +69,4 @@ const UserLogin = () => {
     )
 }
 
-export default UserLogin
+export default withRouter(UserLogin)

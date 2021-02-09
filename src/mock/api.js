@@ -65,6 +65,7 @@ const url = {
       'tagList|1': ['@tags'],
       'likes|100-10000': 10000,
       'comments|100-10000': 10000,
-      'date|1': Random.now('yyyy-MM-dd HH:mm:ss')
+      'date|1': Random.now('yyyy-MM-dd HH:mm:ss'),
+      'src|1': "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
     }]
   })
