@@ -8,6 +8,10 @@ import { Empty } from 'antd';
 export default memo(function LiveManage() {
     const [liveCards, setLiveCards] = useState([])
 
+    useEffect(() => {
+        console.log(liveCards) },
+        [liveCards]
+    )
 
     // add live card
     const addLiveCard = (title , des) => { 
@@ -25,9 +29,6 @@ export default memo(function LiveManage() {
             }
 
         setLiveCards(liveCards => ([...liveCards, newLiveCard]))
-
-        // state滞后一次
-        console.log('current state of liveCards', liveCards)
     }
 
     // handle delete card

@@ -23,13 +23,14 @@ const LiveCard = ({ liveCard , onDelete , onStatus }) => {
     return (
         <CardWrapper>
             <Card size="small"
-                // style={{ width: 300 }}
+                style={{ width: 300 }}
                 cover={
                     <img
                         alt={liveCard.alt}
                         src={liveCard.src}
                     />
                 }
+                hoverable={true}
                 actions={[
                     <Dropdown overlay={menu} placement="topCenter" arrow>
                         <EllipsisOutlined key="ellipsis" />

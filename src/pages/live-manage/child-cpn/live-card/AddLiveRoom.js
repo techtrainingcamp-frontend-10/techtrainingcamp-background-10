@@ -9,7 +9,7 @@ const AddLiveRoom = ( {onAdd} ) => {
     const [confirmLoading, setConfirmLoading] = useState(false);
     const [title, setTitle] = useState('')
     const [des, setDes] = useState('')
-    
+
     const layout = {
         labelCol: {
           span: 6,
@@ -35,9 +35,9 @@ const AddLiveRoom = ( {onAdd} ) => {
 
     const openNotification = () => {
       notification.open({
-        message: 'Notification Title',
+        message: '小提示',
         description:
-          '配置成功！您的直播间已经上线啦',
+          '可以点击直播间卡片来暂停/继续直播哦！',
         icon: <SmileOutlined style={{ color: '#108ee9' }} />,
       });
     };

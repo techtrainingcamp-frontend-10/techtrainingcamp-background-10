@@ -3,29 +3,33 @@ import { useState , useEffect } from 'react'
 import AddLiveRoom from './components/AddLiveRoom'
 import LiveCards from './components/LiveCards'
 import { LiveWrapper } from './style';
+import { Empty } from 'antd';
 
 export default memo(function VideoManage() {
     const [liveCards, setLiveCards] = useState([])
     
+    useEffect(() => {
+        console.log(liveCards) },
+        [liveCards]
+    )
+
+
     // add live card
-    const addLiveCard = ( title , des ) => { 
+    const addLiveCard = (title , des) => { 
         // fake id
-        console.log('title', title)
-        console.log(des)
-        const id = Math.floor(Math.random() * 10000) + 1
+        const id = liveCards.length + 1
         const name = title
         const desc = des
         const newLiveCard = {
                 title: name,
-                description: desc,
-                alt:'userAdd', 
-                src:'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                description: Date(),
+                alt:"userAdd", 
+                src:"https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
+                status: true,
                 id
             }
-        setLiveCards([...liveCards, newLiveCard])
 
-        // state滞后一次
-        console.log('current state of liveCards', liveCards)
+        setLiveCards(liveCards => ([...liveCards, newLiveCard]))
     }
 
     // handle delete card
@@ -33,19 +37,29 @@ export default memo(function VideoManage() {
         setLiveCards(liveCards.filter((liveCard) => liveCard.id !== id))
     }
 
+    const reverseStatus = (id) => {
+        setLiveCards(
+            liveCards.map((liveCard) => 
+            liveCard.id === id ? { ...liveCard, status:!liveCard.status } : liveCard
+            )
+        )
+    }
+
     return (
         <LiveWrapper>
             <div>
                 <h2>短视频页</h2>
                 <AddLiveRoom onAdd={addLiveCard}/>
-                    {liveCards.length > 0 ? 
-                        (
-                            <LiveCards liveCards={liveCards} onDelete={deleteLiveCard} />
-                        ) 
-                        : (
-                            <h3>还没有上传任何短视频。点击 上传短视频 来上传您的第一个作品吧!</h3>
-                        )
-                    }
+                {liveCards.length > 0 ? 
+                    (
+                        <LiveCards liveCards={liveCards} onDelete={deleteLiveCard} onStatus={reverseStatus}/>
+                    ) 
+                    : (
+                        <>
+                        <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="空空如也～ 点击上传视频来上传你的第一个作品吧!"/>
+                        </>
+                    )
+                }
             </div>
         </LiveWrapper>
     )
