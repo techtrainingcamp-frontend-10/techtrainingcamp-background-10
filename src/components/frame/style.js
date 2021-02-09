@@ -10,6 +10,12 @@ export const FrameWrapper = styled.div`
     margin: 16px 24px 16px 0;
   }
 
+  .login {
+    position: absolute;
+    right: 40px;
+    top: 16px;
+  }
+
   .ant-layout {
     width:100%;
     height:100vh; 

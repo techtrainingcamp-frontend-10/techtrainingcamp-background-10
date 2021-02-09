@@ -8,7 +8,7 @@ const AddLiveRoom = ( {onAdd} ) => {
     const [confirmLoading, setConfirmLoading] = useState(false);
     const [title, setTitle] = useState('')
     const [des, setDes] = useState('')
-    
+
     const layout = {
         labelCol: {
           span: 6,
@@ -24,6 +24,7 @@ const AddLiveRoom = ( {onAdd} ) => {
         },
       };
 
+    const [form] = Form.useForm();
 
     // show pop-up UI form to set up the new Live Room
     const showModal = () => {
@@ -39,9 +40,12 @@ const AddLiveRoom = ( {onAdd} ) => {
         setConfirmLoading(true);
         setTimeout(() => {
             onAdd( title , des )
+            setTitle({value: ''})
+            setDes({value: ''})
+            form.resetFields();
             setVisible(false);
             setConfirmLoading(false);
-        }, 500);
+        }, 50);
       }
       else{
         console.log('error')
@@ -55,6 +59,7 @@ const AddLiveRoom = ( {onAdd} ) => {
 
     const onChangeTitle =(e) => {
         setTitle({value: e.target.value});
+        form.setFieldsValue({ des: 'Hi, man!' });
     }
 
     const onChangeDes =(e) => {
@@ -79,6 +84,7 @@ const AddLiveRoom = ( {onAdd} ) => {
                 <Form
                     {...layout}
                     name="basic"
+                    initialValues={{ title: '' }}
                     >
                     <Form.Item
                         label="标题"

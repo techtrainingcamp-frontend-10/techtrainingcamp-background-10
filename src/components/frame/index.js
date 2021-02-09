@@ -1,13 +1,14 @@
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Button } from 'antd';
 
-import React from 'react'
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { FrameWrapper } from './style';
 
 const { Header, Content, Footer } = Layout;
 
-function index(props) {
+function Frame(props) {
+    const [isLogin, setIsLogin] = useState(false);
     return (
         <FrameWrapper>
             <Layout>
@@ -18,6 +19,7 @@ function index(props) {
                         <Menu.Item key="2" onClick={p => { props.history.push("/video") }} >短视频管理</Menu.Item>
                         <Menu.Item key="3" onClick={p => { props.history.push("/comment") }} >评论管理</Menu.Item>
                     </Menu>
+                    <Button className="login" type="text" onClick={p => { props.history.push("/login") }} >{isLogin ? "退出" : "登录"}</Button>
                 </Header>
                 <Content className="site-layout" style={{ padding: '20px 48px', marginTop: 64 }}>
                     <div className="site-layout-background" >
@@ -29,4 +31,4 @@ function index(props) {
         </FrameWrapper>
     )
 }
-export default withRouter(index);
+export default withRouter(Frame);

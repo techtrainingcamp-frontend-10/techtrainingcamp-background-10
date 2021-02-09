@@ -1,3 +1,4 @@
+import Login from "@/pages/login";
 import LiveManage from "@/pages/live-manage";
 import VideoManage from "@/pages/video-manage";
 import CommentManage from "@/pages/comment-manage";
@@ -8,6 +9,10 @@ const routes = [
         path: "/",
         exact: true,
         component: LiveManage
+    },
+    {
+        path: "/login",
+        component: Login
     },
     {
         path: "/live",
