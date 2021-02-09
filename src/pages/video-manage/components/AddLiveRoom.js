@@ -1,14 +1,33 @@
 import { useState , useEffect} from 'react'
-import { Button, Modal, notification} from 'antd';
+import { Modal, notification} from 'antd';
 import { Form, Input } from 'antd';
-import { message, Space } from 'antd';
 import { SmileOutlined } from '@ant-design/icons';
+import { Upload, message, Button } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 
 const AddLiveRoom = ( {onAdd} ) => {
     const [visible, setVisible] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
     const [title, setTitle] = useState('')
     const [des, setDes] = useState('')
+
+    const props = {
+      name: 'file',
+      action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+      headers: {
+        authorization: 'authorization-text',
+      },
+      onChange(info) {
+        if (info.file.status !== 'uploading') {
+          console.log(info.file, info.fileList);
+        }
+        if (info.file.status === 'done') {
+          message.success(`${info.file.name} 上传成功`);
+        } else if (info.file.status === 'error') {
+          message.error(`${info.file.name} 上传失败`);
+        }
+      },
+    };
 
     const layout = {
         labelCol: {
@@ -26,7 +45,7 @@ const AddLiveRoom = ( {onAdd} ) => {
       };
 
     const success = () => {
-      message.success("上传成功");
+      message.success("投放成功");
     };
 
     const warning = () => {
@@ -35,7 +54,7 @@ const AddLiveRoom = ( {onAdd} ) => {
 
     const openNotification = () => {
       notification.open({
-        message: '视频已上传',
+        message: '视频已投放',
         description:
           '现在大家可以看到您的作品啦',
         icon: <SmileOutlined style={{ color: '#108ee9' }} />,
@@ -97,7 +116,7 @@ const AddLiveRoom = ( {onAdd} ) => {
                 confirmLoading={confirmLoading}
                 onCancel={handleCancel}
                 cancelText="取消"
-                okText="上传视频"
+                okText="投放"
             >
                 <Form
                     form={form}
@@ -105,30 +124,31 @@ const AddLiveRoom = ( {onAdd} ) => {
                     name="basic"
                     >
                     <Form.Item
-                        label="标题"
+                        label="作品标题"
                         name="title"
                         rules={[
                         {
                             required: true,
-                            message: '请输入直播间的名称',
+                            message: '请输入视频标题',
                         },
                         ]}
                     >
                         <Input value={title} onChange={onChangeTitle}/>
                     </Form.Item>
-
-                    {/* <Form.Item
-                        label="时间"
-                        name="des"
-                        rules={[
+                    
+                    <Form.Item 
+                      label="您的作品"
+                      rules={[
                         {
-                            required: true,
-                            message: '请输入时间YYYY-MM-DD 00:00',
-                        },
-                        ]}
-                    >
-                        <Input value={des} onChange={onChangeDes} /> */}
-                    {/* </Form.Item> */}
+                            required: true
+                        }
+                      ]}
+                     >
+                      <Upload {...props} maxCount={1}>
+                        <Button icon={<UploadOutlined />}>上传视频</Button>
+                      </Upload>
+                    </Form.Item>
+            
                 </Form>
             </Modal>
         </div>
