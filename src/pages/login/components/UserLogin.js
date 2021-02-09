@@ -58,7 +58,7 @@ const UserLogin = () => {
           const p = new Passport();
           p.login(username, password, () => {
               // 登录成功时，跳转页面
-              props.history.push('/live');
+              this.props.history.push('/live');
           })
         }}>
           登录
