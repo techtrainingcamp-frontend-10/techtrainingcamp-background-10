@@ -12,29 +12,10 @@ export default memo(function CommentManage() {
     useEffect(() => {
         getLiveList().then(res => {
             setLiveCards(res.liveList)
-            console.log(liveCards);
         })
     },
         []
     )
-
-    // add live card
-    const addLiveCard = (title, des) => {
-        // fake id
-        const id = liveCards.length + 1
-        const name = title
-        const desc = des
-        const newLiveCard = {
-            title: name,
-            description: desc,
-            alt: "userAdd",
-            src: "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-            status: true,
-            id
-        }
-
-        setLiveCards(liveCards => ([...liveCards, newLiveCard]))
-    }
 
     // handle delete card
     const deleteLiveCard = (id) => {

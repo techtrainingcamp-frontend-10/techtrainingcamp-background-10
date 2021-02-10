@@ -1,6 +1,7 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import { useState } from 'react'
 import { withRouter } from 'react-router-dom';
+import { setToken } from "@/store/auth";
 import Passport from './Passport'
 
 const UserLogin = (props) => {
@@ -59,6 +60,7 @@ const UserLogin = (props) => {
           const p = new Passport();
           p.login(username, password, () => {
               // 登录成功时，跳转页面
+              setToken(username)
               props.history.push('/live');
           })
         }}>

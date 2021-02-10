@@ -8,7 +8,7 @@ const routes = [
     {
         path: "/",
         exact: true,
-        component: LiveManage
+        component: Login
     },
     {
         path: "/login",
