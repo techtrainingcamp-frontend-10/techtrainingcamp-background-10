@@ -24,6 +24,10 @@ const UserLogin = (props) => {
   const onFinishFailed = (errorInfo) => {
       console.log('Failed:', errorInfo);
   };
+
+  function validateForm() {
+    return username.length > 0 && password.length > 0;
+  }
   
 
   return (
@@ -50,12 +54,12 @@ const UserLogin = (props) => {
         <Input.Password onInput={(e)=>{setPassword(e.target.value)}}/>
       </Form.Item>
 
-      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
+      {/* <Form.Item {...tailLayout} name="remember" valuePropName="checked">
         <Checkbox>Remember me</Checkbox>
-      </Form.Item>
+      </Form.Item> */}
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" onClick={() => {    
+        <Button type="primary" disabled={!validateForm()} onClick={() => {    
           // 登录操作
           const p = new Passport();
           p.login(username, password, () => {
@@ -66,6 +70,9 @@ const UserLogin = (props) => {
         }}>
           登录
         </Button>
+      <Form.Item>
+         您是新用户？ <a href="/register">注册</a>
+      </Form.Item>
       </Form.Item>
     </Form>
     )

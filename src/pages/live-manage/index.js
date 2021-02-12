@@ -9,12 +9,44 @@ export default memo(function LiveManage() {
     const [liveCards, setLiveCards] = useState([])
 
     useEffect(() => {
-        console.log(liveCards) },
-        [liveCards]
-    )
+        const getCards = async () => {
+            const cardsFromServer = await fetchCards()
+            setLiveCards(cardsFromServer)
+          }
+      
+          getCards()
+        }, [])
 
+    const fetchCards = async () => {
+        const res = await fetch('https://qcmt57.fn.thelarkcloud.com/createLive')
+        const data = await res.json()
+        console.log(data)
+        return data
+        }
+    
+    
+    const fetchCard = async (id) => {
+        const res = await fetch(`https://qcmt57.fn.thelarkcloud.com/createLive/${id}`)
+        const data = await res.json()
+        console.log(data)
+        return data
+    }
+        
     // add live card
     const addLiveCard = (title , des) => { 
+    // const addLiveCard = async (task) => {
+    //     const res = await fetch('url', {
+    //         method: 'POST',
+    //         headers: {
+    //         'Content-type': 'application/json',
+    //         },
+    //         body: JSON.stringify(task)
+    //     })
+    
+    //     const data = await res.json()
+    
+    //     setCards([...liveCards, data])
+        
         // fake id
         const id = liveCards.length + 1
         const name = title

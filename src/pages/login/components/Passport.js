@@ -1,3 +1,13 @@
+import { Button, notification, Space } from 'antd';
+
+const openNotificationWithIcon = type => {
+    notification[type]({
+      message: '登录失败',
+      description:
+        '请检查您的用户名和密码输入是否正确',
+    });
+  };
+
 export default class Passport {
     constructor() {
         // 用户登录标识
@@ -13,7 +23,8 @@ export default class Passport {
         } else {
             // 登录失败
             // 这里简单弹出一个消息
-            alert('登录失败！');
+            // alert('登录失败！');
+            openNotificationWithIcon('error')
         }
     }
 }

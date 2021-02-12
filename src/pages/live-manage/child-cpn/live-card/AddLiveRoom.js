@@ -119,12 +119,12 @@ const AddLiveRoom = ( {onAdd} ) => {
                     </Form.Item>
 
                     <Form.Item
-                        label="时间"
+                        label="直播源"
                         name="des"
                         rules={[
                         {
                             required: true,
-                            message: '请输入时间YYYY-MM-DD 00:00',
+                            message: '请输入直播源URL',
                         },
                         ]}
                     >
