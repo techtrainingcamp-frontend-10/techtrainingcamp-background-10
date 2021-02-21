@@ -1,4 +1,15 @@
+
 import { login } from "@/services/manage";
+
+import { Button, notification, Space } from 'antd';
+
+const openNotificationWithIcon = type => {
+    notification[type]({
+        message: '登录失败',
+        description:
+            '请检查您的用户名和密码输入是否正确',
+    });
+};
 
 export default class Passport {
     constructor() {
@@ -22,7 +33,7 @@ export default class Passport {
             this.isLogin = true;
             callback(res.token);
         }).catch(err => {
-            alert('登录失败！');
+            openNotificationWithIcon('error')
         })
     }
 }

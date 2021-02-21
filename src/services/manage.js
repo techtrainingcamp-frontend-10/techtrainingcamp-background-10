@@ -6,6 +6,7 @@ export const getLiveList = () => {
     })
 }
 
+// login
 export const login = (userName, password) => {
     return request({
         url: "/login",
