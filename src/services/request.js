@@ -6,7 +6,7 @@ const instance = axios.create({
   timeout: TIMEOUT
 });
 
-require('../mock/api')
+// require('../mock/api')
 
 instance.interceptors.request.use(config => {
   return config;

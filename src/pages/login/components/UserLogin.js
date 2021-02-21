@@ -58,9 +58,9 @@ const UserLogin = (props) => {
         <Button type="primary" onClick={() => {    
           // 登录操作
           const p = new Passport();
-          p.login(username, password, () => {
+          p.login(username, password, (res) => {
               // 登录成功时，跳转页面
-              setToken(username)
+              setToken(res);
               props.history.push('/live');
           })
         }}>

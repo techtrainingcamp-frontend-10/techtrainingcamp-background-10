@@ -5,14 +5,15 @@ import { useState, useEffect } from 'react'
 import { getLiveList } from "@/services/manage";
 import { LiveWrapper } from './style';
 import LiveCards from './components/LiveCards'
+import axios from 'axios';
 
 export default memo(function CommentManage() {
     const [liveCards, setLiveCards] = useState([])
 
     useEffect(() => {
-        getLiveList().then(res => {
-            setLiveCards(res.liveList)
-        })
+        // getLiveList().then(res => {
+        //     setLiveCards(res.liveList)
+        // })
     },
         []
     )

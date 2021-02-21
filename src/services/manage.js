@@ -5,3 +5,13 @@ export const getLiveList = () => {
         url: "/getLiveList"
     })
 }
+
+export const login = (userName, password) => {
+    return request({
+        url: "/login",
+        data: {
+            userName: userName,
+            password: password
+        }
+    })
+}
