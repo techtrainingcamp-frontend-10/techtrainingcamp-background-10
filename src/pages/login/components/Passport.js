@@ -31,7 +31,7 @@ export default class Passport {
         login("zhangsan", "123").then(res => {
             console.log(res);
             this.isLogin = true;
-            callback(res.token);
+            callback(res);
         }).catch(err => {
             openNotificationWithIcon('error')
         })
