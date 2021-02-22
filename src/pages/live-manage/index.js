@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { useState, useEffect } from 'react'
 
-import { getLives } from "@/services/manage";
+import { getLives, createLive } from "@/services/manage";
 import { LiveWrapper } from './style';
 import AddLiveRoom from './child-cpn/live-card/AddLiveRoom'
 import LiveCards from './child-cpn/live-card/LiveCards'
@@ -11,12 +11,6 @@ export default memo(function LiveManage() {
     const [liveCards, setLiveCards] = useState([])
 
     useEffect(() => {
-        // const getCards = async () => {
-        //     const cardsFromServer = await fetchCards()
-        //     setLiveCards(cardsFromServer)
-        // }
-
-        // getCards()
         getLives().then(res => {
             setLiveCards(res.success.list);
             console.log(res.success);
@@ -52,7 +46,10 @@ export default memo(function LiveManage() {
         //     const data = await res.json()
 
         //     setCards([...liveCards, data])
-
+        createLive(title, des).then(res => {
+            console.log(res);
+        });
+        
         // fake id
         const id = liveCards.length + 1
         const name = title

@@ -6,7 +6,7 @@ import { CardWrapper } from './style';
 
 const { Meta } = Card;
 
-const LiveCard = ({ liveCard, onDelete, onStatus }) => {
+const LiveCard = ({ liveCard, onDelete, onStatus, onDetail }) => {
     const menu = () => {
         return (
             <Menu>
@@ -23,6 +23,7 @@ const LiveCard = ({ liveCard, onDelete, onStatus }) => {
     return (
         <CardWrapper>
             <Card size="small"
+                onClick={() => { onDetail(liveCard.videoId) }}
                 style={{ width: 300 }}
                 cover={
                     <img

@@ -7,7 +7,7 @@ const LiveCards = ({ liveCards , onDelete , onStatus }) => {
         <Space size={[60, 30]} wrap>
             {liveCards.map((liveCard) => (
                 <LiveCard liveCard={liveCard} 
-                    key={liveCard.id}
+                    key={liveCard.videoId}
                     onDelete={onDelete}
                     onStatus={onStatus}
                 />

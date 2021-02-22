@@ -2,6 +2,7 @@ import Login from "@/pages/login";
 import LiveManage from "@/pages/live-manage";
 import VideoManage from "@/pages/video-manage";
 import CommentManage from "@/pages/comment-manage";
+import CommentDetail from "@/pages/comment-detail";
 
 
 const routes = [
@@ -25,6 +26,10 @@ const routes = [
     {
         path: "/comment",
         component: CommentManage
+    },
+    {
+        path: "/detail",
+        component: CommentDetail
     }
 ]
 

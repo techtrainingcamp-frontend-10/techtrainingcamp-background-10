@@ -1,6 +1,6 @@
 import request from "./request"
-import { getToken, getID } from "@/store/auth";
 
+// mock
 // export const getLiveList = () => {
 //     return request({
 //         url: "/getLiveList"
@@ -22,21 +22,41 @@ export const login = (userName, password) => {
 export const getVideos = () => {
     return request({
         method: "post",
-        url: "/searchVideo",
-        data: {
-            userId: getID(),
-            token: getToken()
-        }
+        url: "/searchVideo"
     })
 }
 
 export const getLives = () => {
     return request({
         method: "post",
-        url: "/searchLive",
+        url: "/searchLive"
+    })
+}
+
+export const createLive = (title, des) => {
+    return request({
+        method: "post",
+        url: "/createLive",
         data: {
-            userId: getID(),
-            token: getToken()
+            videoName: title,
+            url: des
+        }
+    })
+}
+
+export const createVideo = () => {
+    return request({
+        method: "post",
+        url: "/createVideo"
+    })
+}
+
+export const getComment = (id) => {
+    return request({
+        method: "post",
+        url: "/getComment",
+        data: {
+            videoId: id
         }
     })
 }

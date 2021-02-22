@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { BASE_URL, TIMEOUT } from "./config";
+import { getToken, getID } from "@/store/auth";
 
 const instance = axios.create({
   baseURL: BASE_URL,
@@ -9,6 +10,14 @@ const instance = axios.create({
 // require('../mock/api')
 
 instance.interceptors.request.use(config => {
+  const userId = getID()
+  const token = getToken()
+
+  if (userId && token) {
+    if (!config.data) config.data = {}
+    config.data.userId = parseInt(userId, 10)
+    config.data.token = token
+  }
   return config;
 }, err => {
 

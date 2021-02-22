@@ -27,7 +27,7 @@ const LiveCard = ({ liveCard , onDelete , onStatus }) => {
                 cover={
                     <img
                         alt={liveCard.alt}
-                        src="https://s3.ax1x.com/2021/02/23/ybuuad.jpg"
+                        src={liveCard.img_url||"https://s3.ax1x.com/2021/02/23/ybuuad.jpg"}
                     />
                 }
                 hoverable={true}

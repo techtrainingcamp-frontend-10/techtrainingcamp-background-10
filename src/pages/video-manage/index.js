@@ -1,5 +1,7 @@
 import React, { memo } from 'react'
-import { useState , useEffect } from 'react'
+import { useState, useEffect } from 'react'
+
+import { getVideos, createVideo } from "@/services/manage";
 import AddLiveRoom from './components/AddLiveRoom'
 import LiveCards from './components/LiveCards'
 import { LiveWrapper } from './style';
@@ -7,27 +9,32 @@ import { Empty } from 'antd';
 
 export default memo(function VideoManage() {
     const [liveCards, setLiveCards] = useState([])
-    
+
     useEffect(() => {
-        console.log(liveCards) },
-        [liveCards]
+        getVideos().then(res => {
+            setLiveCards(res.success.list);
+            console.log(res.success);
+        })
+        console.log(liveCards)
+    },
+        []
     )
 
 
     // add live card
-    const addLiveCard = (title , des) => { 
+    const addLiveCard = (title, des) => {
         // fake id
         const id = liveCards.length + 1
         const name = title
         const desc = des
         const newLiveCard = {
-                title: name,
-                description: Date(),
-                alt:"userAdd", 
-                src:"https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-                status: true,
-                id
-            }
+            title: name,
+            description: Date(),
+            alt: "userAdd",
+            src: "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
+            status: true,
+            id
+        }
 
         setLiveCards(liveCards => ([...liveCards, newLiveCard]))
     }
@@ -39,8 +46,8 @@ export default memo(function VideoManage() {
 
     const reverseStatus = (id) => {
         setLiveCards(
-            liveCards.map((liveCard) => 
-            liveCard.id === id ? { ...liveCard, status:!liveCard.status } : liveCard
+            liveCards.map((liveCard) =>
+                liveCard.id === id ? { ...liveCard, status: !liveCard.status } : liveCard
             )
         )
     }
@@ -49,19 +56,19 @@ export default memo(function VideoManage() {
         <LiveWrapper>
             <div>
                 <h2>短视频页</h2>
-                <AddLiveRoom onAdd={addLiveCard}/>
-                {liveCards.length > 0 ? 
+                <AddLiveRoom onAdd={addLiveCard} />
+                {liveCards.length > 0 ?
                     (
-                        <LiveCards liveCards={liveCards} onDelete={deleteLiveCard} onStatus={reverseStatus}/>
-                    ) 
+                        <LiveCards liveCards={liveCards} onDelete={deleteLiveCard} onStatus={reverseStatus} />
+                    )
                     : (
                         <>
-                        <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="空空如也～ 点击上传视频来上传你的第一个作品吧!"/>
+                            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="空空如也～ 点击上传视频来上传你的第一个作品吧!" />
                         </>
                     )
                 }
             </div>
         </LiveWrapper>
     )
-    
+
 })

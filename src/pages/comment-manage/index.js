@@ -1,12 +1,13 @@
 import { Empty } from 'antd';
 import React, { memo } from 'react'
 import { useState, useEffect } from 'react'
+import { withRouter } from 'react-router-dom';
 
 import { getLives } from "@/services/manage";
 import { LiveWrapper } from './style';
 import LiveCards from './components/LiveCards'
 
-export default memo(function CommentManage() {
+function CommentManage(props) {
     const [liveCards, setLiveCards] = useState([])
 
     useEffect(() => {
@@ -31,6 +32,16 @@ export default memo(function CommentManage() {
         )
     }
 
+    const toDetail = (id) => {
+        console.log(id);
+        props.history.push({
+            pathname: "/detail",
+            query: {
+                videoId: id
+            }
+        });
+    }
+
     return (
         <LiveWrapper>
             <div>
@@ -38,7 +49,7 @@ export default memo(function CommentManage() {
                     (
                         <>
                             <h2>直播列表</h2>
-                            <LiveCards liveCards={liveCards} onDelete={deleteLiveCard} onStatus={reverseStatus} />
+                            <LiveCards liveCards={liveCards} onDelete={deleteLiveCard} onStatus={reverseStatus} onDetail={toDetail} />
                         </>
                     )
                     : (
@@ -48,4 +59,5 @@ export default memo(function CommentManage() {
             </div>
         </LiveWrapper>
     )
-})
+}
+export default withRouter(CommentManage);
