@@ -2,20 +2,18 @@ import { Empty } from 'antd';
 import React, { memo } from 'react'
 import { useState, useEffect } from 'react'
 
-import { getLiveList } from "@/services/manage";
+import { getLives } from "@/services/manage";
 import { LiveWrapper } from './style';
 import LiveCards from './components/LiveCards'
-import { getLives } from "@/services/manage";
 
 export default memo(function CommentManage() {
     const [liveCards, setLiveCards] = useState([])
 
-    getLives().then(res => {
-        console.log(res);
-    })
-
     useEffect(() => {
-
+        getLives().then(res => {
+            setLiveCards(res.success.list);
+            console.log(res.success);
+        })
     },
         []
     )

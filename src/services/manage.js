@@ -1,11 +1,11 @@
 import request from "./request"
 import { getToken, getID } from "@/store/auth";
 
-export const getLiveList = () => {
-    return request({
-        url: "/getLiveList"
-    })
-}
+// export const getLiveList = () => {
+//     return request({
+//         url: "/getLiveList"
+//     })
+// }
 
 // login
 export const login = (userName, password) => {
