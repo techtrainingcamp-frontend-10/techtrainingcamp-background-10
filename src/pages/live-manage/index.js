@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { useState, useEffect } from 'react'
 
-import { getLives, createLive } from "@/services/manage";
+import { getLives, createLive, deleteLive } from "@/services/manage";
 import { LiveWrapper } from './style';
 import AddLiveRoom from './child-cpn/live-card/AddLiveRoom'
 import LiveCards from './child-cpn/live-card/LiveCards'
@@ -36,7 +36,12 @@ export default memo(function LiveManage() {
 
     // handle delete card
     const deleteLiveCard = (id) => {
-        setLiveCards(liveCards.filter((liveCard) => liveCard.id !== id))
+        // setLiveCards(liveCards.filter((liveCard) => liveCard.id !== id))
+        deleteLive(id).then(res=>{
+            getLives().then(res => {
+                setLiveCards(res.success.list);
+            })
+        })
     }
 
     const reverseStatus = (id) => {

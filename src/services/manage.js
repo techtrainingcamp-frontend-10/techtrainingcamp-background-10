@@ -58,6 +58,30 @@ export const createVideo = (title, url) => {
     })
 }
 
+export const deleteVideo = (id) => {
+    return request({
+        method: "post",
+        url: "/delete",
+        data: {
+            videoId: id,
+            judge: "video",
+            controller: getID()
+        }
+    })
+}
+
+export const deleteLive = (id) => {
+    return request({
+        method: "post",
+        url: "/delete",
+        data: {
+            videoId: id,
+            judge: "live",
+            controller: getID()
+        }
+    })
+}
+
 export const getComment = (id) => {
     return request({
         method: "post",

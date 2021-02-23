@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { useState, useEffect } from 'react'
 
-import { getVideos, createVideo } from "@/services/manage";
+import { getVideos, createVideo, deleteVideo } from "@/services/manage";
 import AddLiveRoom from './components/AddLiveRoom'
 import LiveCards from './components/LiveCards'
 import { LiveWrapper } from './style';
@@ -15,9 +15,8 @@ export default memo(function VideoManage() {
             setLiveCards(res.success.list);
             console.log(res.success);
         })
-        console.log(liveCards)
     },
-        [liveCards]
+        []
     )
 
 
@@ -33,7 +32,11 @@ export default memo(function VideoManage() {
 
     // handle delete card
     const deleteLiveCard = (id) => {
-        setLiveCards(liveCards.filter((liveCard) => liveCard.id !== id))
+        deleteVideo(id).then(res=>{
+            getVideos().then(res => {
+                setLiveCards(res.success.list);
+            })
+        })
     }
 
     const reverseStatus = (id) => {
