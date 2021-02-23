@@ -1,4 +1,5 @@
 import request from "./request"
+import { getID } from "@/store/auth";
 
 // mock
 // export const getLiveList = () => {
@@ -39,7 +40,8 @@ export const createLive = (title, des) => {
         url: "/createLive",
         data: {
             videoName: title,
-            url: des
+            url: des,
+            controller: getID()
         }
     })
 }
