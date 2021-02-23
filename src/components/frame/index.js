@@ -1,4 +1,4 @@
-import { Layout, Menu, Button } from 'antd';
+import { Layout, Menu, Button , message} from 'antd';
 
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
@@ -8,9 +8,14 @@ import { FrameWrapper } from './style';
 
 const { Header, Content, Footer } = Layout;
 
+const warning = () => {
+    message.warning('已登出');
+  };
+
 function Frame(props) {
     const handleLog = () => {
         if (isLogin()){
+            warning();
             removeToken();
         }
         props.history.push("/login");

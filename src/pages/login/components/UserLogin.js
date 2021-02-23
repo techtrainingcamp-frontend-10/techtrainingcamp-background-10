@@ -1,4 +1,4 @@
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import { useState } from 'react'
 import { withRouter } from 'react-router-dom';
 import { setToken, setID } from "@/store/auth";
@@ -29,6 +29,9 @@ const UserLogin = (props) => {
     return username.length > 0 && password.length > 0;
   }
   
+  const success = () => {
+    message.success('登录成功！');
+  };
 
   return (
       <Form
@@ -66,6 +69,7 @@ const UserLogin = (props) => {
               // 登录成功时，跳转页面
               setToken(res.token);
               setID(res.userId);
+              success();
               props.history.push('/live');
           })
         }}>

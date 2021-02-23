@@ -33,6 +33,7 @@ export default class Passport {
             this.isLogin = true;
             callback(res);
         }).catch(err => {
+            alert('登录失败')
             openNotificationWithIcon('error')
         })
     }
