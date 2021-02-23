@@ -6,10 +6,10 @@ import { DetailWrapper } from './style';
 import { getComment } from "@/services/manage";
 
 export default function CommentDetail(props) {
-    const videoId = props.location.query.videoId;
     const [list, setList] = useState([])
 
     useEffect(() => {
+        const videoId = props.location.query.videoId;
         getComment(videoId).then(res => {
             setList(res.data);
             console.log(res.data);
