@@ -62,3 +62,13 @@ export const getComment = (id) => {
         }
     })
 }
+
+export const uploadFile = (file) => {
+    return request({
+        method: "post",
+        url: "/fileUpload",
+        data: {
+            file: file
+        }
+    })
+}

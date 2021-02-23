@@ -11,7 +11,7 @@ export default function CommentDetail(props) {
     const [list, setList] = useState([])
 
     useEffect(() => {
-        getComment(1613969044447).then(res => {
+        getComment(videoId).then(res => {
             setList(res.data);
             console.log(res.data);
         });

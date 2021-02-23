@@ -3,7 +3,7 @@ import React, { memo } from 'react'
 import { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom';
 
-import { getLives } from "@/services/manage";
+import { getVideos } from "@/services/manage";
 import { LiveWrapper } from './style';
 import LiveCards from './components/LiveCards'
 
@@ -11,7 +11,7 @@ function CommentManage(props) {
     const [liveCards, setLiveCards] = useState([])
 
     useEffect(() => {
-        getLives().then(res => {
+        getVideos().then(res => {
             setLiveCards(res.success.list);
             console.log(res.success);
         })
