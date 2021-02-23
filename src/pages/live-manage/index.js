@@ -23,11 +23,10 @@ export default memo(function LiveManage() {
 
         createLive(title, url).then(res => {
             console.log(res);
+            getLives().then(res => {
+                setLiveCards(res.success.list);
+            })
         });
-
-        getLives().then(res => {
-            setLiveCards(res.success.list);
-        })
         
         // fake id
         // const id = liveCards.length + 1
