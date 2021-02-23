@@ -30,7 +30,7 @@ const AddLiveRoom = ( {onAdd} ) => {
     };
 
     const warning = () => {
-      message.warning("请完整填写信息");
+      message.warning("请正确填写信息：检查直播源和标题填写");
     };
 
     const openNotification = () => {
