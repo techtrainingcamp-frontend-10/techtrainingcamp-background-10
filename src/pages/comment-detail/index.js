@@ -1,4 +1,4 @@
-import { Comment, List } from 'antd';
+import { Comment, List, Button } from 'antd';
 import React from 'react'
 import { useState, useEffect } from 'react'
 
@@ -28,7 +28,7 @@ export default function CommentDetail(props) {
                 renderItem={item => (
                     <li >
                         <Comment
-                            actions={[<a className="edit" key="list-loadmore-edit">编辑</a>, <a className="delete" key="list-loadmore-more">删除</a>]}
+                            actions={[<Button className="edit" type="text">编辑</Button>, <Button className="delete" type="text">删除</Button>]}
                             content={item.comment}
                             datetime={item.updatedAt}
                         />

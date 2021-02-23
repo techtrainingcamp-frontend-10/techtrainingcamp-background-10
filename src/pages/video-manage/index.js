@@ -17,7 +17,7 @@ export default memo(function VideoManage() {
         })
         console.log(liveCards)
     },
-        []
+        [liveCards]
     )
 
 

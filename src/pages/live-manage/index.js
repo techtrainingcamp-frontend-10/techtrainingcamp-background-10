@@ -28,20 +28,6 @@ export default memo(function LiveManage() {
             })
         });
         
-        // fake id
-        // const id = liveCards.length + 1
-        // const name = title
-        // const desc = des
-        // const newLiveCard = {
-        //     title: name,
-        //     description: desc,
-        //     alt: "userAdd",
-        //     src: "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-        //     status: true,
-        //     id
-        // }
-
-        // setLiveCards(liveCards => ([...liveCards, newLiveCard]))
         getLives().then(res => {
             setLiveCards(res.success.list);
             console.log(res.success);
