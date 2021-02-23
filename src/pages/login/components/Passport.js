@@ -1,7 +1,7 @@
 
 import { login } from "@/services/manage";
 
-import { Button, notification, Space } from 'antd';
+import { notification } from 'antd';
 
 const openNotificationWithIcon = type => {
     notification[type]({

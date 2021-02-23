@@ -1,6 +1,6 @@
 import { Layout, Menu, Button , message} from 'antd';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { isLogin, removeToken } from "@/store/auth";

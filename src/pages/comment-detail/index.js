@@ -1,5 +1,4 @@
-import { Comment, Tooltip, List } from 'antd';
-import moment from 'moment';
+import { Comment, List } from 'antd';
 import React from 'react'
 import { useState, useEffect } from 'react'
 

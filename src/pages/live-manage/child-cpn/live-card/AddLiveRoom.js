@@ -1,7 +1,7 @@
-import { useState , useEffect} from 'react'
+import { useState } from 'react'
 import { Button, Modal, notification} from 'antd';
 import { Form, Input } from 'antd';
-import { message, Space } from 'antd';
+import { message } from 'antd';
 import { SmileOutlined } from '@ant-design/icons';
 
 const layout = {
@@ -12,12 +12,12 @@ const layout = {
     span: 15,
   },
 };
-const tailLayout = {
-  wrapperCol: {
-    offset: 6,
-    span: 15,
-  },
-};
+// const tailLayout = {
+//   wrapperCol: {
+//     offset: 6,
+//     span: 15,
+//   },
+// };
 
 const AddLiveRoom = ( {onAdd} ) => {
     const [visible, setVisible] = useState(false);

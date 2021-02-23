@@ -1,4 +1,4 @@
-import { Card, Menu, Dropdown, Tag } from 'antd';
+import { Card, Menu, Dropdown } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
 
 import React from 'react'
