@@ -46,10 +46,15 @@ export const createLive = (title, url) => {
     })
 }
 
-export const createVideo = () => {
+export const createVideo = (title, url) => {
     return request({
         method: "post",
-        url: "/createVideo"
+        url: "/createVideo",
+        data: {
+            videoName: title,
+            url: url,
+            controller: getID()
+        }
     })
 }
 

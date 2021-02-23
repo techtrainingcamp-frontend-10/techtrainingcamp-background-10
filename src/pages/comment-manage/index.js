@@ -48,7 +48,7 @@ function CommentManage(props) {
                 {liveCards.length > 0 ?
                     (
                         <>
-                            <h2>直播列表</h2>
+                            <h2>短视频列表</h2>
                             <LiveCards liveCards={liveCards} onDelete={deleteLiveCard} onStatus={reverseStatus} onDetail={toDetail} />
                         </>
                     )

@@ -24,19 +24,25 @@ export default memo(function VideoManage() {
     // add live card
     const addLiveCard = (title, des) => {
         // fake id
-        const id = liveCards.length + 1
-        const name = title
-        const desc = des
-        const newLiveCard = {
-            title: name,
-            description: Date(),
-            alt: "userAdd",
-            src: "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-            status: true,
-            id
-        }
+        // const id = liveCards.length + 1
+        // const name = title
+        // const desc = des
+        // const newLiveCard = {
+        //     title: name,
+        //     description: Date(),
+        //     alt: "userAdd",
+        //     src: "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
+        //     status: true,
+        //     id
+        // }
 
-        setLiveCards(liveCards => ([...liveCards, newLiveCard]))
+        // setLiveCards(liveCards => ([...liveCards, newLiveCard]))
+        createVideo(title, des).then(res => {
+            // console.log(res);
+            getVideos().then(res => {
+                setLiveCards(res.success.list);
+            })
+        });
     }
 
     // handle delete card
