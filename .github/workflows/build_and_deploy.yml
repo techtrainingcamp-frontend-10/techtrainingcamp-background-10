@@ -11,6 +11,13 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Set Homepage 🖊️
+        uses: deef0000dragon1/json-edit-action/@v1
+        env:
+          KEY: homepage
+          VALUE: https://techtrainingcamp-frontend-10.github.io/techtrainingcamp-frontend-10-admin.github.io
+          FILE: package.json
+
       - name: Cache ⚡️
         uses: actions/cache@v1
         with:
