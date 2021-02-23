@@ -22,7 +22,7 @@ export default memo(function LiveManage() {
     const addLiveCard = (title, url) => {
 
         createLive(title, url).then(res => {
-            console.log(res);
+            // console.log(res);
             getLives().then(res => {
                 setLiveCards(res.success.list);
             })

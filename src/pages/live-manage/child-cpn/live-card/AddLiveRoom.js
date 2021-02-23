@@ -52,12 +52,11 @@ const AddLiveRoom = ( {onAdd} ) => {
   
     // submit in the pop-up window
     const handleOK = () => {
-      // console.log(title)
-      if (title.length > 0 && url.length > 0){
+      console.log(validURL(url))
+      if (title.length > 0 && validURL(url)){
         setConfirmLoading(true);
         setTimeout(() => {
             onAdd( title , url )
-            console.log('title reset', title)
             setTitle('')
             setUrl('')
             setVisible(false);
@@ -83,7 +82,17 @@ const AddLiveRoom = ( {onAdd} ) => {
     const onChangeUrl =(e) => {
         setUrl(e.target.value)
     }
-    
+
+    const validURL = (url) => {
+        var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+        return !!pattern.test(url);
+    }
+
     const [form] = Form.useForm();
     
     return (
@@ -124,7 +133,7 @@ const AddLiveRoom = ( {onAdd} ) => {
                         rules={[
                         {
                             required: true,
-                            message: '请输入直播源URL',
+                            message: '请输入有效的m3u8直播源URL',
                         },
                         ]}
                     >
