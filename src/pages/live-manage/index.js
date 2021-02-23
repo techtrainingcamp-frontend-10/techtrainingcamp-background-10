@@ -19,8 +19,9 @@ export default memo(function LiveManage() {
 
 
     // add live card
-    const addLiveCard = (title, des) => {
-        createLive(title, des).then(res => {
+    const addLiveCard = (title, url) => {
+
+        createLive(title, url).then(res => {
             console.log(res);
         });
 
@@ -28,10 +29,10 @@ export default memo(function LiveManage() {
             setLiveCards(res.success.list);
         })
         
+        // fake id
+        // const id = liveCards.length + 1
         // const name = title
         // const desc = des
-        // // need to fetch ID from server-side
-        // const id = -1
         // const newLiveCard = {
         //     title: name,
         //     description: desc,
@@ -42,6 +43,10 @@ export default memo(function LiveManage() {
         // }
 
         // setLiveCards(liveCards => ([...liveCards, newLiveCard]))
+        getLives().then(res => {
+            setLiveCards(res.success.list);
+            console.log(res.success);
+        })
     }
 
     // handle delete card

@@ -3,6 +3,7 @@ import moment from 'moment';
 import React from 'react'
 import { useState, useEffect } from 'react'
 
+import { DetailWrapper } from './style';
 import { getComment } from "@/services/manage";
 
 export default function CommentDetail(props) {
@@ -19,7 +20,7 @@ export default function CommentDetail(props) {
     )
 
     return (
-        <div>
+        <DetailWrapper className="wrap-v2">
             <List
                 className="comment-list"
                 header={`${list.length} 条评论`}
@@ -28,13 +29,13 @@ export default function CommentDetail(props) {
                 renderItem={item => (
                     <li >
                         <Comment
-                            actions={[<a key="list-loadmore-edit">编辑</a>, <a key="list-loadmore-more">删除</a>]}
+                            actions={[<a className="edit" key="list-loadmore-edit">编辑</a>, <a className="delete" key="list-loadmore-more">删除</a>]}
                             content={item.comment}
                             datetime={item.updatedAt}
                         />
                     </li>
                 )}
             />
-        </div>
+        </DetailWrapper>
     )
 }

@@ -4,26 +4,26 @@ import { Form, Input } from 'antd';
 import { message, Space } from 'antd';
 import { SmileOutlined } from '@ant-design/icons';
 
+const layout = {
+  labelCol: {
+    span: 6,
+  },
+  wrapperCol: {
+    span: 15,
+  },
+};
+const tailLayout = {
+  wrapperCol: {
+    offset: 6,
+    span: 15,
+  },
+};
+
 const AddLiveRoom = ( {onAdd} ) => {
     const [visible, setVisible] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
     const [title, setTitle] = useState('')
-    const [des, setDes] = useState('')
-
-    const layout = {
-        labelCol: {
-          span: 6,
-        },
-        wrapperCol: {
-          span: 15,
-        },
-      };
-      const tailLayout = {
-        wrapperCol: {
-          offset: 6,
-          span: 15,
-        },
-      };
+    const [url, setUrl] = useState('')
 
     const success = () => {
       message.success('配置成功');
@@ -46,20 +46,20 @@ const AddLiveRoom = ( {onAdd} ) => {
     const showModal = () => {
       // not working...
       setTitle('')
-      setDes('')
+      setUrl('')
       setVisible(true)
     };
   
     // submit in the pop-up window
     const handleOK = () => {
       // console.log(title)
-      if (title.length > 0 && des.length > 0){
+      if (title.length > 0 && url.length > 0){
         setConfirmLoading(true);
         setTimeout(() => {
-            onAdd( title , des )
+            onAdd( title , url )
             console.log('title reset', title)
             setTitle('')
-            setDes('')
+            setUrl('')
             setVisible(false);
             setConfirmLoading(false);
             success()
@@ -80,8 +80,8 @@ const AddLiveRoom = ( {onAdd} ) => {
         setTitle(e.target.value)
     }
 
-    const onChangeDes =(e) => {
-        setDes(e.target.value)
+    const onChangeUrl =(e) => {
+        setUrl(e.target.value)
     }
     
     const [form] = Form.useForm();
@@ -120,7 +120,7 @@ const AddLiveRoom = ( {onAdd} ) => {
 
                     <Form.Item
                         label="直播源"
-                        name="des"
+                        name="url"
                         rules={[
                         {
                             required: true,
@@ -128,7 +128,7 @@ const AddLiveRoom = ( {onAdd} ) => {
                         },
                         ]}
                     >
-                        <Input value={des} onChange={onChangeDes} />
+                        <Input value={url} onChange={onChangeUrl} />
                     </Form.Item>
                 </Form>
             </Modal>
