@@ -15,7 +15,7 @@ instance.interceptors.request.use(config => {
 
   if (userId && token) {
     if (!config.data) config.data = {}
-    config.data.userId = parseInt(userId, 10)
+    config.data.userId = userId
     config.data.token = token
   }
   return config;

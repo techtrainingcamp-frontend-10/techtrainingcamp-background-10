@@ -33,37 +33,30 @@ export default memo(function LiveManage() {
     }
 
     // add live card
-    const addLiveCard = (title, des) => {
-        // const addLiveCard = async (task) => {
-        //     const res = await fetch('url', {
-        //         method: 'POST',
-        //         headers: {
-        //         'Content-type': 'application/json',
-        //         },
-        //         body: JSON.stringify(task)
-        //     })
+    const addLiveCard = (title, url) => {
 
-        //     const data = await res.json()
-
-        //     setCards([...liveCards, data])
-        createLive(title, des).then(res => {
+        createLive(title, url).then(res => {
             console.log(res);
         });
         
         // fake id
-        const id = liveCards.length + 1
-        const name = title
-        const desc = des
-        const newLiveCard = {
-            title: name,
-            description: desc,
-            alt: "userAdd",
-            src: "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
-            status: true,
-            id
-        }
+        // const id = liveCards.length + 1
+        // const name = title
+        // const desc = des
+        // const newLiveCard = {
+        //     title: name,
+        //     description: desc,
+        //     alt: "userAdd",
+        //     src: "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
+        //     status: true,
+        //     id
+        // }
 
-        setLiveCards(liveCards => ([...liveCards, newLiveCard]))
+        // setLiveCards(liveCards => ([...liveCards, newLiveCard]))
+        getLives().then(res => {
+            setLiveCards(res.success.list);
+            console.log(res.success);
+        })
     }
 
     // handle delete card

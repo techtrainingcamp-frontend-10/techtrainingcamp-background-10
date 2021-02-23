@@ -11,7 +11,7 @@ import { getID } from "@/store/auth";
 // login
 export const login = (userName, password) => {
     return request({
-        url: "/login",
+        url: "/managerLogin",
         data: {
             userName: userName,
             password: password
@@ -34,13 +34,13 @@ export const getLives = () => {
     })
 }
 
-export const createLive = (title, des) => {
+export const createLive = (title, url) => {
     return request({
         method: "post",
         url: "/createLive",
         data: {
             videoName: title,
-            url: des,
+            url: url,
             controller: getID()
         }
     })
