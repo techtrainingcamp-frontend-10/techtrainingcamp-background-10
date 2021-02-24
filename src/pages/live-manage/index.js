@@ -5,7 +5,7 @@ import { getLives, createLive, deleteLive } from "@/services/manage";
 import { LiveWrapper } from './style';
 import AddLiveRoom from './child-cpn/live-card/AddLiveRoom'
 import LiveCards from './child-cpn/live-card/LiveCards'
-import { Empty } from 'antd';
+import { Empty , message } from 'antd';
 
 export default memo(function LiveManage() {
     const [liveCards, setLiveCards] = useState([])
@@ -17,6 +17,9 @@ export default memo(function LiveManage() {
         })
     }, [])
 
+    const success = () => {
+        message.success('删除成功！');
+      };
 
     // add live card
     const addLiveCard = (title, url) => {
@@ -38,6 +41,7 @@ export default memo(function LiveManage() {
     const deleteLiveCard = (id) => {
         // setLiveCards(liveCards.filter((liveCard) => liveCard.id !== id))
         deleteLive(id).then(res=>{
+            success()
             getLives().then(res => {
                 setLiveCards(res.success.list);
             })

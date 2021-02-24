@@ -5,7 +5,7 @@ import { getVideos, createVideo, deleteVideo } from "@/services/manage";
 import AddLiveRoom from './components/AddLiveRoom'
 import LiveCards from './components/LiveCards'
 import { LiveWrapper } from './style';
-import { Empty } from 'antd';
+import { Empty , message} from 'antd';
 
 export default memo(function VideoManage() {
     const [liveCards, setLiveCards] = useState([])
@@ -19,6 +19,9 @@ export default memo(function VideoManage() {
         []
     )
 
+    const success = () => {
+        message.success('删除成功！');
+    };
 
     // add live card
     const addLiveCard = (title, des) => {
@@ -33,8 +36,9 @@ export default memo(function VideoManage() {
     // handle delete card
     const deleteLiveCard = (id) => {
         deleteVideo(id).then(res=>{
+            success()
             getVideos().then(res => {
-                setLiveCards(res.success.list);
+                setLiveCards(res.success.list)
             })
         })
     }
