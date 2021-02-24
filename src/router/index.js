@@ -9,27 +9,33 @@ const routes = [
     {
         path: "/",
         exact: true,
-        component: Login
+        component: LiveManage,
+        requiresAuth: true
     },
     {
         path: "/login",
-        component: Login
+        component: Login,
+        requiresAuth: false
     },
     {
         path: "/live",
-        component: LiveManage
+        component: LiveManage,
+        requiresAuth: true
     },
     {
         path: "/video",
-        component: VideoManage
+        component: VideoManage,
+        requiresAuth: true
     },
     {
         path: "/comment",
-        component: CommentManage
+        component: CommentManage,
+        requiresAuth: true
     },
     {
         path: "/detail",
-        component: CommentDetail
+        component: CommentDetail,
+        requiresAuth: true
     }
 ]
 
