@@ -28,7 +28,7 @@ export default class Passport {
         //     // 这里简单弹出一个消息
         //     alert('登录失败！');
         // }
-        login("zhangsan", "123").then(res => {
+        login(username, password).then(res => {
             console.log(res);
             this.isLogin = true;
             callback(res);
