@@ -30,6 +30,7 @@ export default class Passport {
         // }
         login(username, password).then(res => {
             console.log(res);
+            if (!res.data.success) { throw (new Error('login failed')) }
             this.isLogin = true;
             callback(res);
         }).catch(err => {
