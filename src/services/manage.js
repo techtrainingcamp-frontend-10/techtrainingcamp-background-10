@@ -12,6 +12,7 @@ import { getID } from "@/store/auth";
 export const login = (userName, password) => {
     return request({
         url: "/managerLogin",
+        method: "post",
         data: {
             userName: userName,
             password: password
